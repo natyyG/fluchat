@@ -3,9 +3,8 @@ import 'package:chat_app/connect.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-const String supabaseUrl = "https://iuzytxxqsxkxccppfxcd.supabase.co";
-const String anonKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1enl0eHhxc3hreGNjcHBmeGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyMTE5ODEsImV4cCI6MjAwOTc4Nzk4MX0.YAsS3DrweDTY5ObL1XaiLqjRTRWACJhUaC0lkb8V-FY";
+const String supabaseUrl = "";
+const String anonKey = "";
 final SupabaseClient supabase = SupabaseClient(supabaseUrl, anonKey);
 void main() {
   runApp(const MyApp());
