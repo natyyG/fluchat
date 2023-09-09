@@ -46,6 +46,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _messageStream =
       Supabase.instance.client.from("mesages").stream(primaryKey: ["id"]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,8 +74,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     return ListView.builder(
                       itemCount: messages.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(messages[index]['message']),
+                        final message = messages[index];
+                        final isSender = message['user_id'] == 2;
+
+                        return ChatBubble(
+                          message: message['message'],
+                          isSender: isSender,
                         );
                       },
                     );
@@ -87,13 +92,41 @@ class _MyHomePageState extends State<MyHomePage> {
             onFieldSubmitted: (value) async {
               await Supabase.instance.client.from('mesages').insert(
                 {
-                  'user_id': '1',
+                  'user_id': '2', // Assuming 'yemu' is the sender's user_id
                   'message': value,
                 },
               );
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ChatBubble extends StatelessWidget {
+  final String message;
+  final bool isSender;
+
+  const ChatBubble({required this.message, required this.isSender});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        padding: EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          color: isSender ? Colors.blue : Colors.grey,
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: Text(
+          message,
+          style: TextStyle(
+            color: isSender ? Colors.white : Colors.black,
+          ),
+        ),
       ),
     );
   }
