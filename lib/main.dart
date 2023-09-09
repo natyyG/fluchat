@@ -6,9 +6,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  var SUPABASE_URL = "https://iuzytxxqsxkxccppfxcd.supabase.co";
-  var SUPABASE_ANON_KEY =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1enl0eHhxc3hreGNjcHBmeGNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyMTE5ODEsImV4cCI6MjAwOTc4Nzk4MX0.YAsS3DrweDTY5ObL1XaiLqjRTRWACJhUaC0lkb8V-FY";
+  var SUPABASE_URL = "";
+  var SUPABASE_ANON_KEY = "";
   await Supabase.initialize(
     url: SUPABASE_URL,
     anonKey: SUPABASE_ANON_KEY,
